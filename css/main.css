@@ -10,6 +10,16 @@ figcaption {
   font-weight: bold;
 }
 
+h1 {
+  color: #FFCC33;
+  text-shadow: 1px 1px 1px #000;
+  text-align: center;
+}
+
+div {
+  transition: transform 0.2s ease-out;
+}
+
 .message {
   padding: 5px;
   text-shadow: 1px 1px 1px #000;
@@ -17,24 +27,17 @@ figcaption {
   color: #fff;
 }
 
-#columns div {
+.columns__item {
   float: left;
   margin-right: 20px;
   border: 2px solid white;
 }
 
-#columns footer {
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  text-align: center;
-}
-
-/* transitions */
-div {
-  transition: transform 0.2s ease-out;
-}
-
 .moving {
   opacity: 0.25;
   transform: scale(0.8);
+}
+
+.hover {
+  border: 2px dashed #FFCC33;
 }
