@@ -15,7 +15,6 @@ RSP = function(){
     if ("draggable" in document.createElement("span")) return true;
     return false;
   }
-}
 
 return {
   init: function() {
