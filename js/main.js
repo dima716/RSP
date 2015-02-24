@@ -1,6 +1,12 @@
 RSP = function(){
 var dndSupported, // true if drag and drop supported
-    eventCounter = 1;
+    eventCounter = 1,
+    sourceId,
+    payloads = {
+      img1: "I am Rock",
+      img2: "I am Paper",
+      img3: "I am Scissors"
+    }
 
 function detectDragAndDrop() {
   if(navigator.appName == "Microsoft Internet Explorer") {
@@ -18,12 +24,15 @@ function detectDragAndDrop() {
 }
 
 function handleDragStart(event) {
-  statusMessage("Drag started");
+  sourceId = this.id;
+  statusMessage("Drag started: (" + payloads[sourceId] + ")");
 }
 
 function handleDragEvent(event) {
-  statusMessage("count = " + eventCounter++);
+  if(event.preventDefault) event.preventDefault();
+  statusMessage("Received drop: (" + payloads[sourceId] + ")");
 }
+
 
 function handleDragOver(event) {
   if(event.preventDefault) event.preventDefault();
@@ -32,6 +41,8 @@ function handleDragOver(event) {
 
 function setUpListeners() {
   element("img1").addEventListener("dragstart", handleDragStart, false);
+  element("img2").addEventListener("dragstart", handleDragStart, false);
+  element("img3").addEventListener("dragstart", handleDragStart, false);
   element("dz1").addEventListener("dragover", handleDragOver, false);
   element("dz1").addEventListener("drop", handleDragEvent, false);
 }
