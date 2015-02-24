@@ -1,5 +1,6 @@
 RSP = function(){
-var dndSupported; // true if drag and drop supported
+var dndSupported, // true if drag and drop supported
+    eventCounter = 1;
 
 function detectDragAndDrop() {
   if(navigator.appName == "Microsoft Internet Explorer") {
@@ -20,8 +21,19 @@ function handleDragStart(event) {
   statusMessage("Drag started");
 }
 
+function handleDragEvent(event) {
+  statusMessage("count = " + eventCounter++);
+}
+
+function handleDragOver(event) {
+  if(event.preventDefault) event.preventDefault();
+  return false;
+}
+
 function setUpListeners() {
   element("img1").addEventListener("dragstart", handleDragStart, false);
+  element("dz1").addEventListener("dragover", handleDragOver, false);
+  element("dz1").addEventListener("drop", handleDragEvent, false);
 }
 
 
